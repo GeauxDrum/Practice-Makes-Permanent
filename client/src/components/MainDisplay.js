@@ -3,6 +3,8 @@ import Controller from "./Controller";
 import TimeDisplay from "./TimeDisplay";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
+import Button from "@material-ui/core/Button";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
 
 function getModalStyle() {
   return {
@@ -12,6 +14,14 @@ function getModalStyle() {
 }
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    "& > *": {
+      margin: theme.spacing(1),
+    },
+  },
   paper: {
     position: "absolute",
     width: 400,
@@ -78,31 +88,44 @@ export default function MainDisplay(props) {
         setTime={props.setTime}
         msToTime={props.msToTime}
       />
-      <h3>Total Reps: {props.minus + props.check + props.plus}</h3>
-      <h4>Minus Count: {props.minus}</h4>
-      <button
-        onClick={() => {
-          props.setMinus(props.minus + 1);
-        }}
-      >
-        Minus
-      </button>
-      <h4>Check Count: {props.check}</h4>
-      <button
-        onClick={() => {
-          props.setCheck(props.check + 1);
-        }}
-      >
-        Check
-      </button>
-      <h4>Plus Count: {props.plus}</h4>
-      <button
-        onClick={() => {
-          props.setPlus(props.plus + 1);
-        }}
-      >
-        Plus
-      </button>
+      <div id="reps">
+        <h3>Total Reps: {props.minus + props.check + props.plus}</h3>
+      </div>
+      <div id="counts">
+        <h4>Minus Count: {props.minus}</h4>
+        <h4>Check Count: {props.check}</h4>
+        <h4>Plus Count: {props.plus}</h4>
+      </div>
+
+      <div className={classes.root}>
+        <ButtonGroup
+          className="bottomButtons"
+          color="primary"
+          aria-label="outlined primary button group"
+        >
+          <Button
+            onClick={() => {
+              props.setMinus(props.minus + 1);
+            }}
+          >
+            Minus
+          </Button>
+          <Button
+            onClick={() => {
+              props.setCheck(props.check + 1);
+            }}
+          >
+            Check
+          </Button>
+          <Button
+            onClick={() => {
+              props.setPlus(props.plus + 1);
+            }}
+          >
+            Plus
+          </Button>
+        </ButtonGroup>
+      </div>
       <Modal
         open={props.open}
         onClose={props.handleClose}

@@ -20,9 +20,8 @@ export default function Login(props) {
   };
 
   return (
-    <div>
-      <h2>{welcome}</h2>
-      <form onSubmit={handleUsernameSubmit}>
+    <div id="login">
+      <form onSubmit={handleUsernameSubmit} id="loginForm">
         <input
           placeholder="username"
           type="text"
@@ -31,6 +30,7 @@ export default function Login(props) {
         ></input>
         <button type="submit">Submit</button>
       </form>
+      <h2>{welcome}</h2>
     </div>
   );
 }

@@ -17,7 +17,7 @@ app.get("/api/users/:name", (req, res) => {
   let name = req.params.name;
   db.getUser(name, (err, data) => {
     if (err) {
-      console.log("PROBLEM WITH SERVER getHistory");
+      console.log("PROBLEM WITH SERVER getUser");
       res.status(500);
     } else {
       res.send(data);

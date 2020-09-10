@@ -14,5 +14,9 @@ let proTips = [
 let currentTip = proTips[Math.floor(Math.random() * proTips.length)];
 
 export default function ProTips() {
-  return <div>{currentTip}</div>;
+  return (
+    <div id="proTips">
+      <div>{currentTip}</div>
+    </div>
+  );
 }

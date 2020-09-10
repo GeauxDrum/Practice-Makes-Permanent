@@ -148,8 +148,10 @@ export default function App() {
 
   return (
     <div className="page">
-      <h1 id="title">Practice Makes Permanent</h1>
-      <Login setUserInput={setUserInput} getUserID={getUserID} />
+      <div id="title">
+        <h1>Practice Makes Permanent</h1>
+      </div>
+      <Login id="login" setUserInput={setUserInput} getUserID={getUserID} />
       <History userID={userID} />
       <Goal setGoalInput={setGoalInput} />
       <Timer

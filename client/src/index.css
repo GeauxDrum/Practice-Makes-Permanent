@@ -1,11 +1,89 @@
 html {
-  background-color: beige;
+  background-color: rgb(197 230 242);
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
 }
-
-.main-display{
-  border: 1px solid black;
+h1{
+  margin: 0px;
 }
-
+h2{
+  margin: 0px;
+  font-size: 20px;
+}
+h4{
+  margin: 10px 0px;
+  padding-left:50px;
+  padding-right: 50px;
+  margin-bottom: 30px
+}
+#title{
+  display: flex;
+  justify-content: center;
+  margin: 30px 0px;
+}
+#login{
+  display: flex;
+  justify-content: center;
+  text-align:center;
+  margin-bottom: 20px;
+}
+#loginForm{
+  margin-right: 100px;
+}
+#history{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+#goal{
+  display: flex;
+  justify-content: center;
+  text-align:center;
+  margin-bottom: 20px;
+}
+#goalForm{
+  margin-right: 50px;
+}
+#timeSelect{
+  display: flex;
+  justify-content: center;
+  text-align:center;
+  margin-bottom: 20px;
+}
 #demo-simple-select-outlined{
   width: 140px;
+}
+.main-display{
+  border: 1px solid #3f51b5;
+}
+#proTips{
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  font-size: 20px;
+}
+#buttons{
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+#timeDisplay{
+  display: flex;
+  justify-content: center;
+  font-size: 60px;
+}
+#reps{
+  display: flex;
+  justify-content: center;
+}
+#counts{
+  display: flex;
+  justify-content: center;
+}
+#bottomButtons{
+  font-size: 70px;
+}
+#startMessage{
+  display: flex;
+  justify-content: center;
 }

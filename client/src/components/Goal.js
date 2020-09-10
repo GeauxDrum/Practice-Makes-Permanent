@@ -23,16 +23,18 @@ export default function Goal(props) {
 
   return (
     <div>
-      <h2>{statedGoal}</h2>
-      <form onSubmit={handleGoalSubmit}>
-        <input
-          placeholder="practice goal"
-          type="text"
-          value={goal}
-          onChange={handleGoalChange}
-        ></input>
-        <button type="submit">Submit</button>
-      </form>
+      <div id="goal">
+        <form onSubmit={handleGoalSubmit} id="goalForm">
+          <input
+            placeholder="practice goal"
+            type="text"
+            value={goal}
+            onChange={handleGoalChange}
+          ></input>
+          <button type="submit">Submit</button>
+        </form>
+        <h2>{statedGoal}</h2>
+      </div>
     </div>
   );
 }
