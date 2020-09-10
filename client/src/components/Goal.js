@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 
-export default function Goal() {
+export default function Goal(props) {
   const [goal, setGoal] = useState("");
   const [statedGoal, setStatedGoal] = useState(
     "Please state your practice goal"
   );
 
+  // make a function that sets input to true
   const handleGoalChange = (e) => {
     setGoal(e.target.value);
   };
@@ -16,6 +17,7 @@ export default function Goal() {
       console.log(`${goal} submitted`);
       setGoal("");
       setStatedGoal(`By the end of this session, I will ${goal}`);
+      props.setGoalInput(true);
     }
   };
 
