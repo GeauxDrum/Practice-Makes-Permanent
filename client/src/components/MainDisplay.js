@@ -12,13 +12,25 @@ export default function MainDisplay(props) {
   const [minus, setMinus] = useState(0);
 
   const reset = () => {
+    props.setIsActive(false);
     setStartMessage("Sesson Ended");
     //launch modal with stats
     setController("Start");
-    props.setTime(props.timerInput);
     setPlus(0);
     setCheck(0);
     setMinus(0);
+    if (props.timer === 1) {
+      props.setTime(60);
+    }
+    if (props.timer === 10) {
+      props.setTime(600);
+    }
+    if (props.timer === 20) {
+      props.setTime(1200);
+    }
+    if (props.timer === 30) {
+      props.setTime(1800);
+    }
   };
 
   return (
@@ -32,6 +44,7 @@ export default function MainDisplay(props) {
         goalInput={props.goalInput}
         timerInput={props.timerInput}
         reset={reset}
+        toggleTime={props.toggleTime}
       />
       <TimeDisplay time={props.time} setTime={props.setTime} />
       <h3>Total Reps: {minus + check + plus}</h3>

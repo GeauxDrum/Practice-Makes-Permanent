@@ -15,10 +15,12 @@ export default function Controller(props) {
       if (props.controller === "Start") {
         props.setController("Stop");
         props.setStartMessage("Lets Go!");
+        props.toggleTime();
       }
       if (props.controller === "Stop") {
         props.setController("Start");
         props.setStartMessage("Session Stopped");
+        props.toggleTime();
       }
     }
   };

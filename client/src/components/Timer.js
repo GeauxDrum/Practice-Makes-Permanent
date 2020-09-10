@@ -1,38 +1,28 @@
 import React, { useState } from "react";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
 
 export default function Timer(props) {
-  const [timerSummary, setTimerSummary] = useState("Select time on task");
-
-  // upload Material UI dropdown to select time increments
-
-  const handleTimerChange = (e) => {
-    props.setTimer(e.target.value);
-  };
-
-  const handleTimerSubmit = (e) => {
-    e.preventDefault();
-    if (props.timer) {
-      console.log(`${props.timer} submitted`);
-      props.setTimer("");
-      setTimerSummary(`This session will be ${props.timer}`);
-      props.setTimerInput(true);
-      props.setTime(props.timer);
-    }
-  };
-
-  // make a function that updates input to true
   return (
     <div>
-      <h2>{timerSummary}</h2>
-      <form onSubmit={handleTimerSubmit}>
-        <input
-          placeholder="set timer"
-          type="text"
+      <h2>Select time on task</h2>
+      <FormControl variant="outlined">
+        <InputLabel id="demo-simple-select-outlined-label">Time</InputLabel>
+        <Select
+          labelId="demo-simple-select-outlined-label"
+          id="demo-simple-select-outlined"
           value={props.timer}
-          onChange={handleTimerChange}
-        ></input>
-        <button type="submit">Submit</button>
-      </form>
+          onChange={props.handleTimerChange}
+          label="Age"
+        >
+          <MenuItem value={1}>One Minute</MenuItem>
+          <MenuItem value={10}>Ten Minutes</MenuItem>
+          <MenuItem value={20}>Twenty Minutes</MenuItem>
+          <MenuItem value={30}>Thirty Minutes</MenuItem>
+        </Select>
+      </FormControl>
     </div>
   );
 }
