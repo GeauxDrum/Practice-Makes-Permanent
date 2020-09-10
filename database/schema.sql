@@ -14,6 +14,7 @@ CREATE TABLE practice_sessions (
   id int NOT NULL AUTO_INCREMENT,
   musician_id int NOT NULL,
   score int NOT NULL,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id)
 );
 

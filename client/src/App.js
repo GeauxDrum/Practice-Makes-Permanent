@@ -28,6 +28,22 @@ export default function App() {
   const [check, setCheck] = useState(0);
   const [minus, setMinus] = useState(0);
 
+  // userID for future get and post requests
+  const [userID, setUserID] = useState("");
+
+  const getUserID = (name) => {
+    fetch(`http://localhost:5000/api/users/${name}`)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertId) {
+          setUserID(data.insertId);
+        } else {
+          setUserID(data[0].id);
+        }
+      });
+  };
+
   const handleTimerChange = (e) => {
     setTimer(e.target.value);
     setTimerInput(true);
@@ -68,7 +84,6 @@ export default function App() {
       score = 1;
     }
     let finalScore = score * totalReps;
-
     let results = `RESULTS:
     TOTAL TIME: ${timeRemaining}
     SCORE: ${finalScore}`;
@@ -118,8 +133,8 @@ export default function App() {
   return (
     <div>
       <h1>Practice Makes Permanent</h1>
-      <Login setUserInput={setUserInput} />
-      <History />
+      <Login setUserInput={setUserInput} getUserID={getUserID} />
+      <History userID={userID} />
       <Goal setGoalInput={setGoalInput} />
       <Timer
         timer={timer}

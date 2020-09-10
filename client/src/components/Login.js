@@ -4,8 +4,6 @@ export default function Login(props) {
   const [username, setUsername] = useState("");
   const [welcome, setWelcome] = useState("Please enter a userame");
 
-  // make a function that sets input to true
-
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
   };
@@ -17,6 +15,7 @@ export default function Login(props) {
       setUsername("");
       setWelcome(`Welcome back ${username}`);
       props.setUserInput(true);
+      props.getUserID(username);
     }
   };
 

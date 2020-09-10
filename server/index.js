@@ -25,7 +25,7 @@ app.get("/api/users/:name", (req, res) => {
   });
 });
 
-app.get("/api/ids/:id", (req, res) => {
+app.get("/api/history/:id", (req, res) => {
   let id = req.params.id;
   db.getHistory(id, (err, data) => {
     if (err) {
@@ -37,11 +37,12 @@ app.get("/api/ids/:id", (req, res) => {
   });
 });
 
-app.post("/api/:id", (req, res) => {
+app.post("/api/score/:id/:score", (req, res) => {
   let id = req.params.id;
-  db.getHistory(id, (err, data) => {
+  let score = req.params.score;
+  db.addScore(id, score, (err, data) => {
     if (err) {
-      console.log("PROBLEM WITH SERVER getHistory");
+      console.log("PROBLEM WITH SERVER addScore");
       res.status(500);
     } else {
       res.send(data);
