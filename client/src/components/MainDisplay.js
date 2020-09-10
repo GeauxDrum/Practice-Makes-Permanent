@@ -1,30 +1,62 @@
 import React, { useState } from "react";
 import Controller from "./Controller";
 import TimeDisplay from "./TimeDisplay";
+import { makeStyles } from "@material-ui/core/styles";
+import Modal from "@material-ui/core/Modal";
+
+function getModalStyle() {
+  return {
+    top: "50%",
+    left: "50%",
+  };
+}
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    position: "absolute",
+    width: 400,
+    backgroundColor: theme.palette.background.paper,
+    border: "2px solid #000",
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+  },
+}));
 
 export default function MainDisplay(props) {
-  // const reset = () => {
-  //   props.setIsActive(false);
-  //   props.launchResults();
-  //   setStartMessage("Sesson Ended");
-  //   //launch modal with stats
-  //   setController("Start");
-  //   props.setPlus(0);
-  //   props.setCheck(0);
-  //   props.setMinus(0);
-  //   if (props.timer === 1) {
-  //     props.setTime(6);
-  //   }
-  //   if (props.timer === 10) {
-  //     props.setTime(600);
-  //   }
-  //   if (props.timer === 20) {
-  //     props.setTime(1200);
-  //   }
-  //   if (props.timer === 30) {
-  //     props.setTime(1800);
-  //   }
-  // };
+  const classes = useStyles();
+  const [modalStyle] = React.useState(getModalStyle);
+
+  const submitScore = () => {
+    let id = props.userID;
+    let score = props.score;
+
+    fetch(`http://localhost:5000/api/score/${id}/${score}`, {
+      method: "POST", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      // body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+
+  const body = (
+    <div style={modalStyle} className={classes.paper}>
+      <h2 id="simple-modal-title">Results:</h2>
+      <p>Time: {props.elapsed}</p>
+      <p>Score: {props.score}</p>
+      <Modal />
+      <button id="submitScore" onClick={submitScore}>
+        Submit Score
+      </button>
+    </div>
+  );
 
   return (
     <div className="main-display">
@@ -38,6 +70,8 @@ export default function MainDisplay(props) {
         timerInput={props.timerInput}
         reset={props.reset}
         toggleTime={props.toggleTime}
+        handleOpen={props.handleOpen}
+        handleClose={props.handleClose}
       />
       <TimeDisplay
         time={props.time}
@@ -69,6 +103,14 @@ export default function MainDisplay(props) {
       >
         Plus
       </button>
+      <Modal
+        open={props.open}
+        onClose={props.handleClose}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+      >
+        {body}
+      </Modal>
     </div>
   );
 }

@@ -44,6 +44,7 @@ export default function App() {
       });
   };
 
+  // time functions
   const handleTimerChange = (e) => {
     setTimer(e.target.value);
     setTimerInput(true);
@@ -60,20 +61,30 @@ export default function App() {
       setTime(1800);
     }
   };
-
   const toggleTime = () => {
     setIsActive(!isActive);
   };
-
   const msToTime = (s) => {
     var secs = s % 60;
     s = (s - secs) / 60;
     var mins = s % 60;
-
     return (
       mins.toString().padStart(2, "0") + ":" + secs.toString().padStart(2, "0")
     );
   };
+
+  //modal stuff
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  //result handlers
+  const [elapsed, setElapsed] = useState("");
+  const [score, setScore] = useState("");
 
   const launchResults = () => {
     console.log("timer", timer * 60, "time", time);
@@ -87,9 +98,13 @@ export default function App() {
     let results = `RESULTS:
     TOTAL TIME: ${timeRemaining}
     SCORE: ${finalScore}`;
-    console.log("RESULTS:", results);
+    setElapsed(timeRemaining);
+    setScore(finalScore);
+    console.log(results);
+    handleOpen();
   };
 
+  // reset condion afer "end session" or zero on the clock
   const reset = () => {
     setIsActive(false);
     launchResults();
@@ -113,6 +128,7 @@ export default function App() {
     }
   };
 
+  //countdown function
   useEffect(() => {
     let interval = null;
     if (isActive && time === 0) {
@@ -131,8 +147,8 @@ export default function App() {
   }, [isActive, time]);
 
   return (
-    <div>
-      <h1>Practice Makes Permanent</h1>
+    <div className="page">
+      <h1 id="title">Practice Makes Permanent</h1>
       <Login setUserInput={setUserInput} getUserID={getUserID} />
       <History userID={userID} />
       <Goal setGoalInput={setGoalInput} />
@@ -165,6 +181,12 @@ export default function App() {
         setStartMessage={setStartMessage}
         controller={controller}
         setController={setController}
+        open={open}
+        handleOpen={handleOpen}
+        handleClose={handleClose}
+        elapsed={elapsed}
+        score={score}
+        userID={userID}
       />
       <ProTips />
     </div>
