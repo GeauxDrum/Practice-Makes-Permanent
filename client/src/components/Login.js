@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 export default function Login(props) {
   const [username, setUsername] = useState("");
-  const [welcome, setWelcome] = useState("Please enter a userame");
+  const [welcome, setWelcome] = useState("Please enter a username");
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
