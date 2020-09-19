@@ -115,7 +115,7 @@ export default function App() {
     setCheck(0);
     setMinus(0);
     if (timer === 1) {
-      setTime(6);
+      setTime(60);
     }
     if (timer === 10) {
       setTime(600);

@@ -1,4 +1,4 @@
-# Practice Makes Permanent  (link here)
+# Practice Makes Permanent
 
 Practice Makes Permanent is a Web Application that allows users to record practice information through each repetition and receive a score based on positve, neutral, or negative reps.  The app requries users to state a goal for each session and includes a timer to record time on task.  Additionally,  users can track their history to compare scores over time.
 
@@ -22,6 +22,16 @@ Practice Makes Permanent is a Web Application that allows users to record practi
 * [WebPack]
 * [Babel]
 * [NPM]
+
+## Installation:
+```sh
+cd into forked folder
+
+$ npm install
+$ npm run start
+Navigate to localhost:5000/
+```
+
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
 
