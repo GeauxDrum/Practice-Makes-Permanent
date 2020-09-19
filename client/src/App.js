@@ -49,7 +49,7 @@ export default function App() {
     setTimer(e.target.value);
     setTimerInput(true);
     if (e.target.value === 1) {
-      setTime(6);
+      setTime(60);
     }
     if (e.target.value === 10) {
       setTime(600);

@@ -1,4 +1,4 @@
-# Practice Makes Permanent
+# Practice Makes Permanent  (link here)
 
 Practice Makes Permanent is a Web Application that allows users to record practice information through each repetition and receive a score based on positve, neutral, or negative reps.  The app requries users to state a goal for each session and includes a timer to record time on task.  Additionally,  users can track their history to compare scores over time.
 
