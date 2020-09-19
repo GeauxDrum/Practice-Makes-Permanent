@@ -2,6 +2,10 @@
 
 Practice Makes Permanent is a Web Application that allows users to record practice information through each repetition and receive a score based on positve, neutral, or negative reps.  The app requries users to state a goal for each session and includes a timer to record time on task.  Additionally,  users can track their history to compare scores over time.
 
+![MVP_demo_1](https://user-images.githubusercontent.com/59206068/93688056-89a4da00-fa88-11ea-9649-f95af0e4a5fc.gif)
+
+![MVP_demo_2](https://user-images.githubusercontent.com/59206068/93687949-c2907f00-fa87-11ea-9431-20e00641641c.gif)
+
 ## Functionality:
 * user input of username, pracice goals, and time on task dynamically upates interdependent stateful components on the page
 * working timer with pause and restart
